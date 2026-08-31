@@ -1,4 +1,6 @@
 import os
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
 import gradio as gr
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 import torch
@@ -7,8 +9,13 @@ MODEL_ID = "AvinabhDutta-Dev/assamese-sentiment-muril"
 
 print("Loading model, please wait...")
 tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
-model = AutoModelForSequenceClassification.from_pretrained(MODEL_ID, torch_dtype=torch.float16)
+model = AutoModelForSequenceClassification.from_pretrained(MODEL_ID, low_cpu_mem_usage=True)
 model.eval()
+
+# Quantize to int8 for a much smaller memory footprint on CPU
+model = torch.quantization.quantize_dynamic(
+    model, {torch.nn.Linear}, dtype=torch.qint8
+)
 print("Model loaded successfully.")
 
 LABELS = {0: "Negative", 1: "Positive"}  # confirm this matches your training label order
