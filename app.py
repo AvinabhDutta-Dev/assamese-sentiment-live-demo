@@ -7,7 +7,7 @@ MODEL_ID = "AvinabhDutta-Dev/assamese-sentiment-muril"
 
 print("Loading model, please wait...")
 tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
-model = AutoModelForSequenceClassification.from_pretrained(MODEL_ID)
+model = AutoModelForSequenceClassification.from_pretrained(MODEL_ID, torch_dtype=torch.float16)
 model.eval()
 print("Model loaded successfully.")
 
