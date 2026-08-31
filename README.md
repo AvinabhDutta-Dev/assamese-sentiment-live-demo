@@ -14,14 +14,19 @@ python app.py
 ```
 Then open `http://127.0.0.1:7860` in your browser.
 
-## Deployment
+## Model
 
-Deployed on [Render](https://render.com) (free tier). Build command: `pip install -r requirements.txt`. Start command: `python app.py`.
+This demo uses an ONNX-converted version of the fine-tuned MuRIL model, hosted on Hugging Face:
 
-**Note:** the free tier sleeps after 15 minutes of inactivity — the first request after a period of inactivity may take 30-60 seconds to respond while the server wakes up.
+**[AvinabhDutta-Dev/assamese-sentiment-muril-onnx](https://huggingface.co/AvinabhDutta-Dev/assamese-sentiment-muril-onnx)**
+
+The ONNX format was chosen specifically to reduce memory footprint for lightweight CPU deployment — the original, fully documented PyTorch model (with complete evaluation results and model card) is available separately at [AvinabhDutta-Dev/assamese-sentiment-muril](https://huggingface.co/AvinabhDutta-Dev/assamese-sentiment-muril).
+
+The model is loaded directly from Hugging Face Hub at runtime — no model files are stored in this repository.
 
 ## Related
 
 - 🔬 [Full project (5-model comparison)](https://github.com/AvinabhDutta-Dev/assamese-sentiment-analysis)
 - 📊 [Dataset](https://huggingface.co/datasets/AvinabhDutta-Dev/assamese-movie-reviews-sentiment)
 - 🤗 [Model](https://huggingface.co/AvinabhDutta-Dev/assamese-sentiment-muril)
+- 🤗 [Model](https://huggingface.co/AvinabhDutta-Dev/assamese-sentiment-muril-onnx)
