@@ -64,6 +64,15 @@ The ONNX format was chosen specifically to reduce memory footprint for lightweig
 
 The model is loaded directly from Hugging Face Hub at runtime — no model files are stored in this repository.
 
+## Live Demo
+
+The GIF below demonstrates the Gradio interface, Assamese text input, and the sentiment prediction workflow using the fine-tuned MuRIL model converted to ONNX.
+
+![Assamese Sentiment Analysis — Live Gradio Demo](assets/assamese-inference-demo.gif)
+
+**Try the demo:** [Open the live application](YOUR_RENDER_APP_URL)
+
+
 ## Related Projects and Resources
 
 - 🔬 [Full project (5-model comparison)](https://github.com/AvinabhDutta-Dev/assamese-sentiment-analysis)
